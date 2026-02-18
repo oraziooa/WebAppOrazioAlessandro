@@ -46,13 +46,14 @@ Include:
 
 ### Creare il database 
 
-```sql CREATE DATABASE webapp_fiera;
+```sql CREATE DATABASE FieraDb
 
-Modificare nell'appsettings.json il valore di "DefaultConnection" inserendop la stringa di connessione al db
+Verificare la stringa di connessione in appsettings.json
 
-Su Visual Studio 2022
-Da Package Manager Console eseguire :
- Update-Database
+Applicare le migration:
+
+Da Visual Studio (Package Manager Console)
+Update-Database
 
 Oppure via CLI:
 
@@ -72,8 +73,30 @@ Utente di default verrà creato al primo avvio
 Ruolo		Email			Password
 Admin		admin@admin.com		Admin123!
 
-per richiamare le api bisognerà registrarsi o effettuare il login per avere il token jwt da copiare e incollare nella box Authorize dello swagger.
-I nuovi utenti registrati assumeranno il ruolo User.
-Sarà possibile assegnare un ruolo (Admin o Supervisor) al nuovo utente user solo se l'utente che effettua la chiamata avra il ruolo di admin. Quindi dovrà essere inserito in Authorize il token dell admin.
+Autenticazione e Ruoli
 
-Per le notifiche (SignalR) ho creato un piccolo client console (WebAppOrazioAlessandro.Client) da avviare insieme all'app web in cui verranno visualizzate le notifiche inviate durante le operazioni crud sulla console.
+Per utilizzare le API protette:
+
+Effettuare il login tramite endpoint /api/Auth/login
+
+Copiare il token JWT restituito
+
+Inserire il token nella sezione Authorize di Swagger
+
+I nuovi utenti registrati tramite /api/Auth/register assumono automaticamente il ruolo User.
+
+L’assegnazione dei ruoli Admin o Supervisor può essere effettuata solo da un utente con ruolo Admin.
+--------------------------------------
+Notifiche Real-Time (SignalR)
+
+È incluso un client console (WebAppOrazioAlessandro.Client) che si connette all’Hub SignalR.
+
+Per testare le notifiche:
+
+Avviare l’API
+
+Avviare il progetto console client
+
+Eseguire operazioni CRUD dall’API
+
+Le notifiche verranno visualizzate nella console
