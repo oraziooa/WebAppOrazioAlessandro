@@ -44,9 +44,9 @@ Include:
 
 ## Configurazione Database
 
-### Creare il database 
+Creare il database 
 
-```sql CREATE DATABASE FieraDb
+sql CREATE DATABASE FieraDb
 
 Verificare la stringa di connessione in appsettings.json
 
