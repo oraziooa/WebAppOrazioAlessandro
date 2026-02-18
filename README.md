@@ -49,6 +49,9 @@ Creare il database
 sql CREATE DATABASE FieraDb
 
 Verificare la stringa di connessione in appsettings.json
+"ConnectionStrings": {
+  "DefaultConnection": "Host=localhost;Port=5432;Database=FieraDb;Username=postgres;Password=YOUR_PASSWORD"
+}
 
 Applicare le migration:
 
